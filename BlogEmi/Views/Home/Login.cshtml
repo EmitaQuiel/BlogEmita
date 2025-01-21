@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+
+}
+
+                <div class="card-body">
+                    <form asp-controller="Home" asp-action="Login" method="post">
+                        <input class="form-control mb-3" type="text" placeholder="Email" required name="email" />
+                        <input class="form-control mb-3" type="password" placeholder="Password" required name="password" />
+                        <div class="d-grid gap-2 mb-3">
+                            <button class="btn btn-primary" type="submit">Login</button>
+                        </div>
+                        @if (ViewData["Message"] != null)
+                        {
+                            <div class="form-group">
+                                <div class="alert alert-danger" role="alert">
+                                    @ViewData["Message"]
+                                </div>
+                            </div>
+                        }
+                        Do you not have an account? <a href="@Url.Action("Register","Home")">Register</a>
+
+                    </form>
+
+                </div>
+            
