@@ -1,6 +1,57 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-hello
+﻿@model BlogEmi.Models.BlogViewModel
+
+
+<head>
+    <link rel="stylesheet" href="~/css/Blog.css" />
+    
+</head>
+
+<div class="containerBlog">
+    <div class="content1">
+        <div class="containerPerfil">
+            <h3>@Model.UserProfile.UserName</h3>
+
+            <div>
+                <strong>Description:</strong>
+                <p>@Model.UserProfile.Description</p>
+            </div>
+
+            @if (Model.UserProfile.Image != null && Model.UserProfile.Image.Length > 0)
+            {
+                <img src="data:image/png;base64,@Convert.ToBase64String(Model.UserProfile.Image)" alt="Profile Image" style="max-width: 200px;" />
+            }
+            else
+            {
+                <p>No profile image available.</p>
+            }
+        </div>
+
+    </div>
+    <div class="content2">
+        @foreach (var post in Model.Posts)
+        {
+            <div class="containerpost">
+                <div class="postBody">
+                    <div class="infoPost">
+                        <h3><strong>@post.Title</strong></h3>
+                        <p class="contentP">@post.Content</p>
+                        <p class="date"><strong>Date:</strong> @post.Date.ToString("dd/MM/yyyy hh:mm tt")</p>
+
+                    </div>
+
+
+                    @if (post.Image != null && post.Image.Length > 0)
+                    {
+                        <div class="imgPost">
+                            <img src="data:image/png;base64,@Convert.ToBase64String(post.Image)" alt="Post Image" style="max-width: 150px;" />
+
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+    </div>
+    </div>
+
+

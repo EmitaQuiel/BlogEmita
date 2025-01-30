@@ -5,6 +5,18 @@
       "PackagePath": "staticwebassets\\BlogEmi.bundle.scp.css"
     },
     {
+      "Id": "E:\\Desarrollo Web\\C#\\BlogEmi\\BlogEmi\\wwwroot\\assets\\fonts\\Starborn.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Starborn.ttf"
+    },
+    {
+      "Id": "E:\\Desarrollo Web\\C#\\BlogEmi\\BlogEmi\\wwwroot\\css\\Blog.css",
+      "PackagePath": "staticwebassets\\css\\Blog.css"
+    },
+    {
+      "Id": "E:\\Desarrollo Web\\C#\\BlogEmi\\BlogEmi\\wwwroot\\css\\Home.css",
+      "PackagePath": "staticwebassets\\css\\Home.css"
+    },
+    {
       "Id": "E:\\Desarrollo Web\\C#\\BlogEmi\\BlogEmi\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

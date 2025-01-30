@@ -13,9 +13,13 @@ namespace BlogEmi.Controllers
     public class HomeController : Controller
     {
         private readonly IUserService _UserServicio;
-        public HomeController(IUserService UserServicio)
+        private readonly IPostService _postService;
+        private readonly IProfileService _profileService;
+        public HomeController(IUserService UserServicio, IPostService PostService, IProfileService ProfileService)
         {
             _UserServicio = UserServicio;
+            _postService = PostService;
+            _profileService = ProfileService;
         }
 
         public IActionResult Register()
@@ -40,6 +44,22 @@ namespace BlogEmi.Controllers
             return View();
         }
 
+
+        public async Task<IActionResult> Blog()
+        {
+            var userName = User.Identity?.Name ?? "DefaultUser"; // Obtiene el nombre del usuario autenticado
+            var profile = await _profileService.GetProfileByUserName(userName);
+            var posts = await _postService.GetAllPosts();
+
+            var viewModel = new BlogViewModel
+            {
+                UserProfile = profile,
+                Posts = posts
+            };
+
+            return View(viewModel);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Login(string email, string password)
         {
@@ -51,7 +71,7 @@ namespace BlogEmi.Controllers
             }
             List<Claim> claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, userFound.FullName)
+                new Claim(ClaimTypes.Name, userFound.UserName)
             };
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             AuthenticationProperties properties = new AuthenticationProperties

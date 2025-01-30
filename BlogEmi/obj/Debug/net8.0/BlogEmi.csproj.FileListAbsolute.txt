@@ -274,3 +274,4 @@ E:\Desarrollo Web\C#\BlogEmi\BlogEmi\obj\Debug\net8.0\refint\BlogEmi.dll
 E:\Desarrollo Web\C#\BlogEmi\BlogEmi\obj\Debug\net8.0\BlogEmi.pdb
 E:\Desarrollo Web\C#\BlogEmi\BlogEmi\obj\Debug\net8.0\BlogEmi.genruntimeconfig.cache
 E:\Desarrollo Web\C#\BlogEmi\BlogEmi\obj\Debug\net8.0\ref\BlogEmi.dll
+E:\Desarrollo Web\C#\BlogEmi\BlogEmi\obj\Debug\net8.0\BlogEmi.sourcelink.json

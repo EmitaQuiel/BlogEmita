@@ -2,25 +2,35 @@
     Layout = null;
 
 }
+<head>
+    <link rel="stylesheet" href="~/css/Home.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+</head>
 
-                <div class="card-body">
-                    <form asp-controller="Home" asp-action="Login" method="post">
-                        <input class="form-control mb-3" type="text" placeholder="Email" required name="email" />
-                        <input class="form-control mb-3" type="password" placeholder="Password" required name="password" />
-                        <div class="d-grid gap-2 mb-3">
-                            <button class="btn btn-primary" type="submit">Login</button>
-                        </div>
-                        @if (ViewData["Message"] != null)
-                        {
-                            <div class="form-group">
-                                <div class="alert alert-danger" role="alert">
-                                    @ViewData["Message"]
-                                </div>
-                            </div>
-                        }
-                        Do you not have an account? <a href="@Url.Action("Register","Home")">Register</a>
+<div class="container-Login">
+    <h1>Login</h1>
 
-                    </form>
-
+    <div class="card-body">
+        <form asp-controller="Home" asp-action="Login" method="post">
+            <input class="input" type="text" placeholder="Email" required name="email" />
+            <input class="input" type="password" placeholder="Password" required name="password" />
+            <div class="">
+                <button class="button" type="submit">Login</button>
+            </div>
+            @if (ViewData["Message"] != null)
+            {
+                <div class="form-group">
+                    <div class="alert alert-danger" role="alert">
+                        @ViewData["Message"]
+                    </div>
                 </div>
+            }
+            <p> Do you not have an account? <a href="@Url.Action("Register","Home")">Register</a></p>
+
+        </form>
+
+    </div>
+</div>
             

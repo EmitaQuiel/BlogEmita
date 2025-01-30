@@ -13,10 +13,92 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    padding:0;
+    margin: 0;
+}
+h1 {
+    font-family: "Karla", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+h2 {
+    font-family: "Karla", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+h3 {
+    font-family: "Karla", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+p {
+    font-family: "Karla", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+body {
+    width: 80%;
+    margin: 2% auto;
+    border: 1px solid #808080;
+    border-radius: 15px;
+    padding:0.5%;
+    overflow-x: hidden;
 }
 
-body {
-  margin-bottom: 60px;
+.presentation {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px
+}
+.name-header {
+    display: flex;
+    width: 99%;
+    height: 30px;
+    text-align: left;
+    border-radius: 10px;
+    background: #e7e7e7;
+    border: 1px solid #b6b6b6;
+}
+.name-header p{
+    margin-left:10px;
+}
+.content {
+    width: 99%;
+    height:30px;
+    background: #e7e7e7;
+    margin-top: 10px;
+    border: 1px solid #b6b6b6;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.c{
+    display:flex;
+    justify-content: center;
+}
+.navList1 {
+    display: flex;
+    justify-content: left;
+    list-style: none;
+}
+.navList2 {
+    display: flex;
+    justify-content: right;
+    list-style: none;
+}
+
+.content ul {
+    padding:0;
+}
+.navList1 a, .navList2 a {
+    margin-right: 10px;
+    color: black;
+    cursor: pointer;
+}
+.navList1 a {
+    text-decoration: none;
 }
