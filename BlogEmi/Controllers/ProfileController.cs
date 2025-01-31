@@ -22,7 +22,6 @@ namespace BlogEmi.Controllers
             var profile = await _profileService.GetProfileByUserName(userName);
             return View(profile);
         }
-
         [HttpPost]
         public async Task<IActionResult> Edit(UserProfile profile, IFormFile? image)
         {
@@ -35,10 +34,14 @@ namespace BlogEmi.Controllers
                 }
             }
 
+            var user = await _profileService.GetProfileByUserName(User.Identity.Name);
+            profile.UserId = user.Id;
+
             await _profileService.UpdateProfile(profile);
             TempData["Mensaje"] = "Profile updated successfully.";
             return RedirectToAction("Profile");
         }
+
 
     }
 }

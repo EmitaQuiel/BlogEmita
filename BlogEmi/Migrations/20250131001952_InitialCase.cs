@@ -11,11 +11,6 @@ namespace BlogEmi.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "FullName",
-                table: "Users",
-                newName: "UserName");
-
             migrationBuilder.CreateTable(
                 name: "Posts",
                 columns: table => new
@@ -33,11 +28,27 @@ namespace BlogEmi.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    IdUser = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.IdUser);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UsersProfiles",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
@@ -45,7 +56,18 @@ namespace BlogEmi.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UsersProfiles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UsersProfiles_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "IdUser",
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsersProfiles_UserId",
+                table: "UsersProfiles",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -57,10 +79,8 @@ namespace BlogEmi.Migrations
             migrationBuilder.DropTable(
                 name: "UsersProfiles");
 
-            migrationBuilder.RenameColumn(
-                name: "UserName",
-                table: "Users",
-                newName: "FullName");
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

@@ -7,11 +7,17 @@ namespace BlogEmi.Models
     {
         [Key]
         public int IdUser { get; set; }
+
         [Required, StringLength(50)]
         public string UserName { get; set; } = string.Empty;
+
         [Required, StringLength(50)]
         public string Email { get; set; } = string.Empty;
+
         [Required, PasswordPropertyText]
         public string Password { get; set; } = string.Empty;
+
+        // Relación inversa con UserProfile
+        public ICollection<UserProfile> Profiles { get; set; } = new List<UserProfile>();
     }
 }

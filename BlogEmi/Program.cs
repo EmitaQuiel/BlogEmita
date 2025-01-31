@@ -1,13 +1,12 @@
 using BlogEmi.Services.Contract;
 using BlogEmi.Services.Implementation;
-using BlogEmi.Data; // Asegúrate de tener el espacio de nombres correcto
+using BlogEmi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configuración del contexto de base de datos
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -16,7 +15,6 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 
-// Agregar controladores con vistas
 
 builder.Services.AddHttpContextAccessor();
 

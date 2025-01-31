@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogEmi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250128001822_InitialCase")]
+    [Migration("20250131001952_InitialCase")]
     partial class InitialCase
     {
         /// <inheritdoc />
@@ -95,13 +95,34 @@ namespace BlogEmi.Migrations
                     b.Property<byte[]>("Image")
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("UsersProfiles");
+                });
+
+            modelBuilder.Entity("BlogEmi.Models.UserProfile", b =>
+                {
+                    b.HasOne("BlogEmi.Models.User", "User")
+                        .WithMany("Profiles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BlogEmi.Models.User", b =>
+                {
+                    b.Navigation("Profiles");
                 });
 #pragma warning restore 612, 618
         }
